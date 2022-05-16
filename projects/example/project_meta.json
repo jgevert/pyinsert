@@ -1,0 +1,4 @@
+{
+  "source_folder": "/opt/data/download",
+  "files": ["*.csv"]
+}

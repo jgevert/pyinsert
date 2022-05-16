@@ -1,0 +1,6 @@
+{
+  "base_currency_code": "str",
+  "base_discount_amount": "int",
+  "base_discount_invoiced": "int",
+  "base_grand_total": "float"
+}

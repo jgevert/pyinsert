@@ -1,0 +1,11 @@
+{
+  "database_type": "postgresql",
+  "database": "staging",
+  "host": "database.azure.com",
+  "username": "user_name",
+  "password": "your_password",
+  "port": 5432,
+  "table": "raw_data",
+  "schema": "example",
+  "primary_keys": ["id"]
+}
