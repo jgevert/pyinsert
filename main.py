@@ -1,7 +1,8 @@
 from dataclasses import dataclass
 from modules import load_json_files
 from modules import greb_parameters
-from modules import load_csv_files
+from modules.load_csv_files import CSVImporter
+from modules.load_into_dask import DaskDDLoader
 import json
 import sys
 
@@ -71,7 +72,16 @@ def main():
     data_model = Datamodel(f"projects/{return_dict['project_name']}/datamodel.json")
 
     # load data into dataframes
-    load_csv_files.importer(source_folder=project_meta.source_folder, files=project_meta.files)
+    project_csv = CSVImporter(
+        source_folder=project_meta.source_folder,
+        files=project_meta.files,
+        sep='|',
+        datamodel=data_model.model,
+        pkeys=db_conncect.primary_keys
+    )
+    project_csv.import_csv_files()
+    # into dask
+    dask_dataframe = DaskDDLoader()
 
 
 if __name__ == '__main__':
