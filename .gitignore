@@ -129,5 +129,7 @@ dmypy.json
 .pyre/
 
 # credentials
-projects/magento
+projects/magento/
+
+test_data/
 

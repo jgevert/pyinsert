@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from modules import load_json_files
 from modules import greb_parameters
 from modules.load_csv_files import CSVImporter
-from modules.load_into_dask import DaskDDLoader
+from modules.load_into_pandas import PandasLoader
 import json
 import sys
 
@@ -79,9 +79,8 @@ def main():
         datamodel=data_model.model,
         pkeys=db_conncect.primary_keys
     )
-    project_csv.import_csv_files()
-    # into dask
-    dask_dataframe = DaskDDLoader()
+
+    project_csv.into_dataframes(partitions)
 
 
 if __name__ == '__main__':
